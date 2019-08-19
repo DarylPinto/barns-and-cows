@@ -1,20 +1,11 @@
 import React, { useState, useEffect } from "react";
-import generate from "./generate";
-
-const size = parseInt(window.location.search.replace("?", ""));
+import Tile from "./components/Tile";
+import generateBoard from "./game/generateBoard";
 
 function App() {
 	const [grid, setGrid] = useState([]);
 	const [debug, setDebug] = useState(false);
 	const [time, setTime] = useState(new Date());
-
-	const colorMap = {
-		GRASS: "#81ce81",
-		TENT: "#f14324",
-		TREE: "#1a9225"
-	};
-
-	const tileSize = "40px";
 
 	const handleTileClick = tile => {
 		if (tile.type === "TREE") return;
@@ -24,6 +15,7 @@ function App() {
 		else tile.choice = null;
 
 		setTime(new Date());
+
 		if (grid.flat().every(t => t.type === t.choice)) {
 			window.setTimeout(() => {
 				alert("YOU WIN!");
@@ -32,11 +24,13 @@ function App() {
 	};
 
 	useEffect(() => {
-		setGrid(generate(size));
+		const size = parseInt(window.location.search.replace("?", ""));
+		const board = generateBoard(size);
+		setGrid(board);
 	}, []);
 
 	return (
-		<main>
+		<main style={{fontFamily: "sans-serif"}}>
 			<button onClick={() => setDebug(!debug)}>Toggle Debug Mode</button>
 			<table>
 				<tbody>
@@ -52,26 +46,11 @@ function App() {
 						<tr>
 							<td>{row.filter(t => t.type === "TENT").length}</td>
 							{row.map(tile => (
-								<td
-									style={{
-										padding: "10px",
-										backgroundColor: colorMap[tile.choice] || "#CCC",
-										height: tileSize,
-										width: tileSize,
-										userSelect: "none",
-										cursor: "pointer"
-									}}
+								<Tile
+									tile={tile}
+									debug={debug}
 									onClick={() => handleTileClick(tile)}
-								>
-									{debug && (
-										<div>
-											<pre>x: {tile.x}</pre>
-											<pre>y: {tile.y}</pre>
-											<pre>type: {tile.type}</pre>
-											<pre>choice: {tile.choice || "N/A"}</pre>
-										</div>
-									)}
-								</td>
+								/>
 							))}
 						</tr>
 					))}

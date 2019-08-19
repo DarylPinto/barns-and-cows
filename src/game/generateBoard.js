@@ -1,5 +1,4 @@
 // Helper functions
-const clone = obj => JSON.parse(JSON.stringify(obj));
 const randItem = arr => arr[Math.floor(Math.random() * arr.length)];
 
 // Game logic
@@ -59,7 +58,7 @@ const generate = size => {
 		for (let j = 0; j < size; j++) {
 			let tile = grid[i][j];
 			// Randomly place tents that are not touching each other
-			if (Math.random() > 0.6 && !tentIsBorderingTile(flatGrid, tile)) {
+			if (Math.random() > 0.2 && !tentIsBorderingTile(flatGrid, tile)) {
 				tile.type = "TENT";
 			}
 		}
