@@ -1,8 +1,8 @@
 td.tile {
 	padding: 10px;
 	background-color: #222;
-	height: 12vh;
-	width: 12vh;
+	height: 8vh;
+	width: 8vh;
 	user-select: none;
 	border-radius: 6px;
 	cursor: pointer;
@@ -11,6 +11,7 @@ td.tile {
 
 td.tree {
 	background-color: #597938;
+	position: relative;
 	
 	&::after {
 		content: "";
@@ -22,8 +23,10 @@ td.tree {
 		background-size: contain;
 		background-repeat: no-repeat;
 		background-position: center center;	
-		position: relative;
-		top: -20px;
+		position: absolute;
+		top: -30px;
+		left: 0;
+		right: 0;
 		pointer-events: none;
 	}
 }

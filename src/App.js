@@ -1,12 +1,15 @@
 import React, { useState, useEffect } from "react";
 import "./App.scss";
 import Tile from "./components/Tile";
+import TentCount from "./components/TentCount";
 import generateBoard from "./game/generateBoard";
 
 const boardSize = parseInt(window.location.search.replace("?", "")) || 6;
 
 function App() {
 	const [grid, setGrid] = useState([]);
+	const flatGrid = grid.flat();
+
 	const [debug, setDebug] = useState(false);
 	const [time, setTime] = useState(new Date());
 
@@ -19,14 +22,14 @@ function App() {
 
 		setTime(new Date());
 
-		if (grid.flat().every(t => t.type === t.choice)) {
+		if (flatGrid.every(t => t.type === t.choice)) {
 			window.setTimeout(() => {
 				alert("YOU WIN!");
-			}, 100);
+			}, 210);
 		}
 	};
 
-	useEffect(() => {	
+	useEffect(() => {
 		const board = generateBoard(boardSize);
 		setGrid(board);
 	}, []);
@@ -39,14 +42,12 @@ function App() {
 					<tr>
 						<td />
 						{grid.map((row, i) => (
-							<td style={{ textAlign: "center" }}>
-								{grid.flat().filter(t => t.x === i && t.type === "TENT").length}
-							</td>
+							<TentCount tiles={flatGrid.filter(t => t.x === i)} />
 						))}
 					</tr>
 					{grid.map(row => (
 						<tr>
-							<td>{row.filter(t => t.type === "TENT").length}</td>
+							<TentCount tiles={row} />
 							{row.map(tile => (
 								<Tile
 									tile={tile}
