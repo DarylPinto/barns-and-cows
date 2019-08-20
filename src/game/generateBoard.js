@@ -35,7 +35,7 @@ const getFreeAdjacentTiles = (flatGrid, tile) => {
 		getTile(flatGrid, tile.x + 1, tile.y),
 		getTile(flatGrid, tile.x, tile.y - 1),
 		getTile(flatGrid, tile.x - 1, tile.y)
-	].filter(tile => tile.x > -500);
+	].filter(tile => tile.x > -500 && tile.type === "GRASS");
 };
 
 const generate = size => {
@@ -58,7 +58,7 @@ const generate = size => {
 		for (let j = 0; j < size; j++) {
 			let tile = grid[i][j];
 			// Randomly place tents that are not touching each other
-			if (Math.random() > 0.2 && !tentIsBorderingTile(flatGrid, tile)) {
+			if (Math.random() > 0.55 && !tentIsBorderingTile(flatGrid, tile)) {
 				tile.type = "TENT";
 			}
 		}

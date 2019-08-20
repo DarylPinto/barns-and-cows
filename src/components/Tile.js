@@ -1,7 +1,8 @@
 import React, { memo } from "react";
+import "./Tile.scss";
 
 const Tile = ({ tile, debug, onClick }) => {
-	const tileSize = debug ? "130px" : "40px";
+	const tileSize = "10vh";
 
 	const colorMap = {
 		GRASS: "#81ce81",
@@ -11,15 +12,20 @@ const Tile = ({ tile, debug, onClick }) => {
 
 	const style = {
 		padding: "10px",
-		backgroundColor: colorMap[tile.choice] || "#CCC",
+		backgroundColor: colorMap[tile.choice] || "#222",
 		height: tileSize,
 		width: tileSize,
 		userSelect: "none",
+		borderRadius: "6px",
 		cursor: "pointer"
 	};
 
+	const tileClass = tile.choice
+		? `tile ${tile.choice.toLowerCase()}`.trim()
+		: "tile";
+
 	return (
-		<td style={style} onClick={onClick}>
+		<td className={tileClass} onClick={onClick}>
 			{debug && (
 				<div>
 					<pre>x: {tile.x}</pre>

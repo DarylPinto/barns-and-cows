@@ -1,0 +1,51 @@
+td.tile {
+	padding: 10px;
+	background-color: #222;
+	height: 12vh;
+	width: 12vh;
+	user-select: none;
+	border-radius: 6px;
+	cursor: pointer;
+	transition: .2s;
+}
+
+td.tree {
+	background-color: #597938;
+	
+	&::after {
+		content: "";
+		display: block;
+		width: 45px;
+		height: 90px;
+		margin: auto;	
+		background-image: url("../assets/images/tree.png");
+		background-size: contain;
+		background-repeat: no-repeat;
+		background-position: center center;	
+		position: relative;
+		top: -20px;
+		pointer-events: none;
+	}
+}
+
+td.grass {
+	background-color: #6d9840;
+}
+
+td.tent {
+	background-color: #6d9840;
+	&::before {
+		content: "";
+		display: block;
+		margin: 0 auto;
+		width: 0px;
+		height: 10px;
+		border-style: solid;
+		border-color: transparent;
+		border-width: 40px 20px;
+		border-bottom-color: #a51818;	
+		position: relative;
+		top: -20px;
+	}
+
+}

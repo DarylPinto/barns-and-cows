@@ -1,6 +1,9 @@
 import React, { useState, useEffect } from "react";
+import "./App.scss";
 import Tile from "./components/Tile";
 import generateBoard from "./game/generateBoard";
+
+const boardSize = parseInt(window.location.search.replace("?", "")) || 6;
 
 function App() {
 	const [grid, setGrid] = useState([]);
@@ -23,15 +26,14 @@ function App() {
 		}
 	};
 
-	useEffect(() => {
-		const size = parseInt(window.location.search.replace("?", ""));
-		const board = generateBoard(size);
+	useEffect(() => {	
+		const board = generateBoard(boardSize);
 		setGrid(board);
 	}, []);
 
 	return (
 		<main style={{fontFamily: "sans-serif"}}>
-			<button onClick={() => setDebug(!debug)}>Toggle Debug Mode</button>
+			{/* <button onClick={() => setDebug(!debug)}>Toggle Debug Mode</button> */}
 			<table>
 				<tbody>
 					<tr>
