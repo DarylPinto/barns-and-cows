@@ -1,0 +1,20 @@
+.tent-count {
+	text-align: center;
+	font-size: 40px;
+	position: relative;
+	opacity: 0.6;
+	cursor: default;
+	transition: 0.2s;
+	&:hover {
+		z-index: 1;
+	}
+
+	&.complete {
+		opacity: 0.2;
+	}
+
+	&.invalid {
+		opacity: 1;
+		color: red;
+	}
+}

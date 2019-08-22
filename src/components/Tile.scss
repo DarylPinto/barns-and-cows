@@ -7,6 +7,27 @@ td.tile {
 	border-radius: 6px;
 	cursor: pointer;
 	transition: .2s;
+	color: white;
+	font-size: 10px;
+	// Tent (hidden)
+	&::before {
+		content: "";
+		display: block;
+		margin: 0 auto;
+		width: 0px;
+		height: 0px;
+		border-style: solid;
+		border-color: transparent;
+		border-width: 40px 20px;
+		border-bottom-color: #ca3030;	
+		position: absolute;
+		top: -50%;
+		transform: translateY(25%) scale(0);
+		transform-origin: 20px 60px;
+		left: 0;
+		right: 0;
+		transition: .2s;
+	}
 }
 
 td.tree {
@@ -17,14 +38,14 @@ td.tree {
 		content: "";
 		display: block;
 		width: 45px;
-		height: 90px;
+		height: 80px;
 		margin: auto;	
 		background-image: url("../assets/images/tree.png");
 		background-size: contain;
 		background-repeat: no-repeat;
 		background-position: center center;	
 		position: absolute;
-		top: -30px;
+		top: -20px;
 		left: 0;
 		right: 0;
 		pointer-events: none;
@@ -37,18 +58,8 @@ td.grass {
 
 td.tent {
 	background-color: #6d9840;
+	position: relative;
 	&::before {
-		content: "";
-		display: block;
-		margin: 0 auto;
-		width: 0px;
-		height: 10px;
-		border-style: solid;
-		border-color: transparent;
-		border-width: 40px 20px;
-		border-bottom-color: #a51818;	
-		position: relative;
-		top: -20px;
+		transform: translateY(25%) scale(1);
 	}
-
 }

@@ -36,7 +36,7 @@ function App() {
 
 	return (
 		<main style={{fontFamily: "sans-serif"}}>
-			{/* <button onClick={() => setDebug(!debug)}>Toggle Debug Mode</button> */}
+			<button onClick={() => setDebug(!debug)}>Toggle Debug Mode</button>
 			<table>
 				<tbody>
 					<tr>
