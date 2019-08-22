@@ -4,7 +4,7 @@
 }
 
 body {
-	background-color: tan;
+	background-color: #f1dbc6;
 }
 
 main {
@@ -14,4 +14,6 @@ main {
 	align-items: center;
 	min-height: 100vh;
 	min-width: 100%;
+	position: relative;
+	left: -1vh;
 }

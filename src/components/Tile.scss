@@ -1,65 +1,70 @@
 td.tile {
-	padding: 10px;
-	background-color: #222;
+	background-color: #333230;
+	border-width: 0 1px 2px 0;
+	border-color: transparent;
+	border-style: solid;
 	height: 8vh;
 	width: 8vh;
 	user-select: none;
 	border-radius: 6px;
 	cursor: pointer;
-	transition: .2s;
+	transition: 0.2s;
 	color: white;
 	font-size: 10px;
+	position: relative;
+	-webkit-tap-highlight-color: transparent;
 	// Tent (hidden)
 	&::before {
 		content: "";
 		display: block;
-		margin: 0 auto;
-		width: 0px;
-		height: 0px;
-		border-style: solid;
-		border-color: transparent;
-		border-width: 40px 20px;
-		border-bottom-color: #ca3030;	
+		width: 36px;	
+		margin: auto;
+		background-image: url("../assets/images/tent.svg");
+		background-size: contain;
+		background-repeat: no-repeat;
+		background-position: center center;
 		position: absolute;
-		top: -50%;
-		transform: translateY(25%) scale(0);
-		transform-origin: 20px 60px;
-		left: 0;
 		right: 0;
-		transition: .2s;
+		left: 0;
+		top: 0;
+		bottom: 0;
+		transform: scale(0);
+		pointer-events: none;
+		transition: 0.2s;
+	}
+}
+
+td.tile {
+	&.tree,
+	&.grass,
+	&.tent {
+		background-color: #ccd67d;
+		position: relative;
+		border-color: #98bd8e;
 	}
 }
 
 td.tree {
-	background-color: #597938;
-	position: relative;
-	
 	&::after {
 		content: "";
 		display: block;
-		width: 45px;
-		height: 80px;
-		margin: auto;	
-		background-image: url("../assets/images/tree.png");
+		width: 40px;
+		height: 75px;
+		margin: auto;
+		background-image: url("../assets/images/tree.svg");
 		background-size: contain;
 		background-repeat: no-repeat;
-		background-position: center center;	
+		background-position: center center;
 		position: absolute;
-		top: -20px;
-		left: 0;
+		top: -15px;
+		left: 8px;
 		right: 0;
 		pointer-events: none;
 	}
 }
 
-td.grass {
-	background-color: #6d9840;
-}
-
 td.tent {
-	background-color: #6d9840;
-	position: relative;
 	&::before {
-		transform: translateY(25%) scale(1);
+		transform: scale(1);
 	}
 }
