@@ -1,11 +1,11 @@
 import React from 'react';
 
-const App = () => {
+const Play = () => {
 	return (
 		<div>
-			test
+			Play screen	
 		</div>
 	);
 };
 
-export default App;
+export default Play;
