@@ -5,7 +5,9 @@ import "./Welcome.scss";
 const Welcome = () => {
 	return (
 		<div className="Welcome">
-			<h1>Barns and Cows</h1>
+			<h1>
+				Barns<span>and</span>Cows
+			</h1>
 			<Link to="/play">Play</Link>
 		</div>
 	);

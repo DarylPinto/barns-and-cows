@@ -77,6 +77,8 @@ const generate = size => {
 					let pickedAdj = randItem(adjacent);
 					pickedAdj.type = "TREE";
 					pickedAdj.choice = "TREE";
+				}else {
+					tile.type = "GRASS";
 				}
 			}
 		}

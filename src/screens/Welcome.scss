@@ -9,8 +9,22 @@
 	margin: 0 auto;
 
 	h1 {
-		font-size: 3rem;
-		margin-bottom: 30px;
+		font-size: 5rem;
+		margin-top: -100px;
+		margin-bottom: 40px;
+		text-align: center;
+		color: #4eb582;
+		padding: 0 60px 20px 60px;	
+		border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+		text-shadow: 2px 2px #34825b;
+		user-select: none;
+		span {
+			display: block;
+			font-size: 3rem;
+			margin-top: -0.5rem;
+			margin-bottom: -1rem;
+			opacity: 0.7;
+		}
 	}
 
 	a {

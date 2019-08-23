@@ -4,14 +4,14 @@ import Tile from "components/Tile";
 import TentCount from "components/TentCount";
 import generateBoard from "game/generateBoard";
 
+const debug = false;
+
 const Board = ({ size }) => {
-	const [grid, setGrid] = useState([]);
-	const flatGrid = grid.flat();
-
-	const [tileWidth, setTileWidth] = useState(0);
-
-	const [debug, setDebug] = useState(false);
 	const [time, setTime] = useState(new Date());
+	const [tileWidth, setTileWidth] = useState(0);
+	const [grid, setGrid] = useState([]);
+
+	const flatGrid = grid.flat();
 
 	const handleTileClick = tile => {
 		if (tile.type === "TREE") return;
@@ -30,14 +30,21 @@ const Board = ({ size }) => {
 	};
 
 	useEffect(() => {
-		// Initialize board
+		// Initialize board data
 		const board = generateBoard(size);
 		setGrid(board);
 
-		let boardWidth = Math.round(
-			Math.min(window.innerHeight, document.body.offsetWidth) * 0.75
-		);
-		setTileWidth(boardWidth / size);
+		// Resize board
+		const resizeBoard = () => {
+			let boardWidth = Math.round(
+				Math.min(window.innerHeight, document.body.offsetWidth) * 0.75
+			);
+			setTileWidth(boardWidth / size);
+		};
+		window.addEventListener("resize", resizeBoard);
+		resizeBoard();
+
+		return () => window.removeEventListener("resize", resizeBoard);
 	}, []);
 
 	const style = {

@@ -14,7 +14,7 @@ td.tile {
 	&::before {
 		content: "";
 		display: block;
-		width: 50%;	
+		width: 50%;
 		margin: auto;
 		background-image: url("../assets/images/tent.svg");
 		background-size: contain;
@@ -63,4 +63,10 @@ td.tent {
 	&::before {
 		transform: scale(1);
 	}
+}
+
+td pre {
+	font-family: monospace;
+	position: relative;
+	z-index: 1;
 }

@@ -6,8 +6,8 @@ import "./Play.scss";
 const Play = () => {
 	return (
 		<div className="Play">
-			{/* <Link to="/">&lt;</Link> */}
-			<Board size={9} />
+			<Link to="/">&lt;</Link>
+			<Board size={7} />
 		</div>
 	);
 };
