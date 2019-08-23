@@ -1,9 +1,13 @@
-import React from 'react';
+import React from "react";
+import { Link } from "react-router-dom";
+import Board from "components/Board";
+import "./Play.scss";
 
 const Play = () => {
 	return (
-		<div>
-			Play screen	
+		<div className="Play">
+			{/* <Link to="/">&lt;</Link> */}
+			<Board size={9} />
 		</div>
 	);
 };

@@ -1,8 +1,8 @@
 {
-  "name": "tents-trees-clone",
+  "name": "barns-and-cows",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://darylpinto.com/tents/",
+  "homepage": "https://darylpinto.github.io/barns-and-cows/",
   "dependencies": {
     "classnames": "^2.2.6",
     "node-sass": "^4.12.0",

@@ -3,10 +3,7 @@ td.tile {
 	border-width: 0 1px 2px 0;
 	border-color: transparent;
 	border-style: solid;
-	height: 8vh;
-	width: 8vh;
 	user-select: none;
-	border-radius: 6px;
 	cursor: pointer;
 	transition: 0.2s;
 	color: white;
@@ -17,7 +14,7 @@ td.tile {
 	&::before {
 		content: "";
 		display: block;
-		width: 36px;	
+		width: 50%;	
 		margin: auto;
 		background-image: url("../assets/images/tent.svg");
 		background-size: contain;
@@ -48,16 +45,15 @@ td.tree {
 	&::after {
 		content: "";
 		display: block;
-		width: 40px;
-		height: 75px;
+		height: 100%;
 		margin: auto;
 		background-image: url("../assets/images/tree.svg");
 		background-size: contain;
 		background-repeat: no-repeat;
 		background-position: center center;
 		position: absolute;
-		top: -15px;
-		left: 8px;
+		top: -15%;
+		left: 12%;
 		right: 0;
 		pointer-events: none;
 	}

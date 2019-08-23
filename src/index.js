@@ -1,9 +1,12 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import { BrowserRouter as Router, Route } from "react-router-dom";
-import Welcome from "./screens/Welcome.js";
-import Play from "./screens/Play.js";
 import * as serviceWorker from "./serviceWorker";
+import { BrowserRouter as Router, Route } from "react-router-dom";
+import Welcome from "screens/Welcome";
+import Play from "screens/Play";
+import "./index.scss";
+
+document.title = "Barns and Cows";
 
 ReactDOM.render(
 	<Router>

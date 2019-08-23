@@ -1,12 +1,12 @@
-import React from 'react';
+import React from "react";
 import { Link } from "react-router-dom";
-import Play from "./Play.js";
+import "./Welcome.scss";
 
 const Welcome = () => {
 	return (
-		<div>
-			Trees and Tents
-			<Link to="/play">Play!</Link>
+		<div className="Welcome">
+			<h1>Barns and Cows</h1>
+			<Link to="/play">Play</Link>
 		</div>
 	);
 };

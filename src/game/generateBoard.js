@@ -73,9 +73,11 @@ const generate = size => {
 			// Place tree in random tile adjacent to tent
 			if (tile.type === "TENT") {
 				let adjacent = getFreeAdjacentTiles(flatGrid, tile);
-				let pickedAdj = randItem(adjacent);
-				pickedAdj.type = "TREE";
-				pickedAdj.choice = "TREE";
+				if (adjacent.length > 0) {
+					let pickedAdj = randItem(adjacent);
+					pickedAdj.type = "TREE";
+					pickedAdj.choice = "TREE";
+				}
 			}
 		}
 	}
