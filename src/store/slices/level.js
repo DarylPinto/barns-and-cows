@@ -22,6 +22,7 @@ const levelSlice = createSlice({
 		setNewBoard(state, action) {
 			const board = generateBoard(action.payload.size);
 			state.board = board;
+			state.moveHistory = [];
 		},
 		cycleTile(state, action) {
 			// Select tile tile based on payload
@@ -36,10 +37,19 @@ const levelSlice = createSlice({
 				state.moveHistory.push({ x, y });
 			}
 		},
-		undo(state, action) {	
-			let tile = state.moveHistory.pop();
-			const prevType = types.indexOf(tile.choice)
-			// to-do: cycle backwards	
+		undo(state, action) {
+			// Get last history item
+			let historyItem = state.moveHistory.pop();
+			if(!historyItem) return state;
+			// Select tile based on historyItem
+			const { x, y } = historyItem;
+			const flatBoard = state.board.flat();
+			let tile = flatBoard.find(t => t.x === x && t.y === y);
+			// console.log(JSON.parse(JSON.stringify(tile)));
+			let prevTypeIndex = types.indexOf(tile.choice) - 1;
+			if(prevTypeIndex <= -1) prevTypeIndex = types.length - 1;	
+			// Cycle tile backwards
+			tile.choice = types[prevTypeIndex];
 		}
 	}
 });

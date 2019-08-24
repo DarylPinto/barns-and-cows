@@ -3,7 +3,7 @@ import ReactDOM from "react-dom";
 import * as serviceWorker from "./serviceWorker";
 import { Provider } from "react-redux";
 import store from "store";
-import { HashRouter as Router, Route } from "react-router-dom";
+import { BrowserRouter as Router, Route } from "react-router-dom";
 import { AnimatedSwitch } from "react-router-transition";
 import Welcome from "screens/Welcome";
 import Play from "screens/Play";
@@ -13,7 +13,7 @@ document.title = "Barns and Cows";
 
 ReactDOM.render(
 	<Provider store={store}>
-		<Router>
+		<Router basename="/barns-cows">
 			<AnimatedSwitch
 				atEnter={{ opacity: 0 }}
 				atLeave={{ opacity: 1 }}
