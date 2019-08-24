@@ -1,10 +1,9 @@
 import React, { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { actions as level } from "store/slices/level";
-import "components/Board.scss";
 import Tile from "components/Tile";
 import CowCount from "components/CowCount";
-import generateBoard from "game/generateBoard";
+import "./Board.scss";
 
 const debug = false;
 
@@ -26,9 +25,8 @@ const Board = ({ size }) => {
 
 	useEffect(() => {
 		// Initialize board if uninitialized
-		if (board.length === 0) {
-			let newBoard = generateBoard(size);
-			dispatch(level.setBoard({ board: newBoard }));
+		if (board.length === 0) {	
+			dispatch(level.setNewBoard({ size }));
 		}
 
 		// Resize board when window size changes
