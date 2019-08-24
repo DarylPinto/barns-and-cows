@@ -32,16 +32,16 @@ td.tile {
 }
 
 td.tile {
-	&.tree,
+	&.barn,
 	&.grass,
-	&.tent {
+	&.cow {
 		background-color: #ccd67d;
 		position: relative;
 		border-color: #98bd8e;
 	}
 }
 
-td.tree {
+td.barn {
 	&::after {
 		content: "";
 		display: block;
@@ -59,7 +59,7 @@ td.tree {
 	}
 }
 
-td.tent {
+td.cow {
 	&::before {
 		transform: scale(1);
 	}

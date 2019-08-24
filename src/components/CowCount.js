@@ -1,13 +1,14 @@
 import React from "react";
 import classNames from "classnames";
-import "./TentCount.scss";
+import "./CowCount.scss";
+import { GRASS, COW, BARN } from "assets/constants";
 
-const TentCount = ({ tiles, width }) => {
-	let count = tiles.filter(t => t.type === "TENT").length;
+const CowCount = ({ tiles, width }) => {
+	let count = tiles.filter(t => t.type === COW).length;
 	let complete = tiles.every(t => t.choice !== null);
-	let invalid = tiles.filter(t => t.choice === "TENT").length !== count;
+	let invalid = tiles.filter(t => t.choice === COW).length !== count;
 
-	const className = classNames("TentCount", {
+	const className = classNames("CowCount", {
 		complete: complete,
 		invalid: complete && invalid
 	});
@@ -25,4 +26,4 @@ const TentCount = ({ tiles, width }) => {
 	);
 };
 
-export default TentCount;
+export default CowCount;

@@ -1,49 +1,39 @@
 import React, { useState, useEffect } from "react";
+import { useSelector, useDispatch } from "react-redux";
+import { actions as level } from "store/slices/level";
 import "components/Board.scss";
 import Tile from "components/Tile";
-import TentCount from "components/TentCount";
+import CowCount from "components/CowCount";
 import generateBoard from "game/generateBoard";
 
 const debug = false;
 
 const Board = ({ size }) => {
-	const [time, setTime] = useState(new Date());
+	const dispatch = useDispatch();
+
+	const board = useSelector(state => state.level.board);
+	const flatBoard = board.flat();
+
 	const [tileWidth, setTileWidth] = useState(0);
-	const [grid, setGrid] = useState([]);
 
-	const flatGrid = grid.flat();
-
-	const handleTileClick = tile => {
-		if (tile.type === "TREE") return;
-
-		if (tile.choice === null) tile.choice = "GRASS";
-		else if (tile.choice === "GRASS") tile.choice = "TENT";
-		else tile.choice = null;
-
-		setTime(new Date());
-
-		if (flatGrid.every(t => t.type === t.choice)) {
-			window.setTimeout(() => {
-				alert("YOU WIN!");
-			}, 210);
-		}
+	// Resize board width/height to fit screen
+	const resizeBoard = () => {
+		let boardWidth = Math.round(
+			Math.min(document.body.offsetHeight, document.body.offsetWidth) * 0.75
+		);
+		setTileWidth(boardWidth / size);
 	};
 
 	useEffect(() => {
-		// Initialize board data
-		const board = generateBoard(size);
-		setGrid(board);
+		// Initialize board if uninitialized
+		if (board.length === 0) {
+			let newBoard = generateBoard(size);
+			dispatch(level.setBoard({ board: newBoard }));
+		}
 
-		// Resize board
-		const resizeBoard = () => {
-			let boardWidth = Math.round(
-				Math.min(window.innerHeight, document.body.offsetWidth) * 0.75
-			);
-			setTileWidth(boardWidth / size);
-		};
-		window.addEventListener("resize", resizeBoard);
+		// Resize board when window size changes
 		resizeBoard();
-
+		window.addEventListener("resize", resizeBoard);
 		return () => window.removeEventListener("resize", resizeBoard);
 	}, []);
 
@@ -59,23 +49,18 @@ const Board = ({ size }) => {
 				<tbody>
 					<tr>
 						<td />
-						{grid.map((row, i) => (
-							<TentCount
-								tiles={flatGrid.filter(t => t.x === i)}
+						{board.map((row, i) => (
+							<CowCount
+								tiles={flatBoard.filter(t => t.x === i)}
 								width={tileWidth}
 							/>
 						))}
 					</tr>
-					{grid.map(row => (
+					{board.map(row => (
 						<tr>
-							<TentCount tiles={row} width={tileWidth} />
+							<CowCount tiles={row} width={tileWidth} />
 							{row.map(tile => (
-								<Tile
-									tile={tile}
-									debug={debug}
-									width={tileWidth}
-									onClick={() => handleTileClick(tile)}
-								/>
+								<Tile tile={tile} debug={debug} width={tileWidth} />
 							))}
 						</tr>
 					))}

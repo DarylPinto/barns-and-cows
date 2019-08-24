@@ -1,7 +1,11 @@
 import React, { memo } from "react";
+import { useDispatch } from "react-redux";
+import { actions as level } from "store/slices/level";
 import "./Tile.scss";
 
-const Tile = ({ tile, debug, width, onClick }) => {
+const Tile = ({ tile, debug, width }) => {
+	const dispatch = useDispatch();
+
 	const tileClass = tile.choice
 		? `tile ${tile.choice.toLowerCase()}`.trim()
 		: "tile";
@@ -13,7 +17,16 @@ const Tile = ({ tile, debug, width, onClick }) => {
 	};
 
 	return (
-		<td className={tileClass} style={style} onClick={onClick}>
+		<td
+			className={tileClass}
+			style={style}
+			onClick={() => dispatch(
+				level.cycleTile({
+					x: tile.x,
+					y: tile.y
+				})
+			)}
+		>
 			{debug && (
 				<div>
 					<pre>x: {tile.x}</pre>

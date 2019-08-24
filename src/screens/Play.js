@@ -15,7 +15,7 @@ const Play = () => {
 	return (
 		<div className="Play">
 			<Link to="/" style={backBtnStyle}> ← Back</Link>
-			<Board size={7} />
+			<Board size={10} />
 		</div>
 	);
 };
