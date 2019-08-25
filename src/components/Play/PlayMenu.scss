@@ -4,11 +4,25 @@
 	position: fixed;
 	top: 10px;
 	left: 10px;
-	max-width: 150px;
-	button, a {
+	min-width: 200px;
+	button,
+	a {
 		font-size: 20px;
 		padding: 10px;
 		margin-bottom: 5px;
+	}
+	i {
+		margin-right: 5px;
+	}
+	.small {
+		display: flex;
+		justify-content: space-between;
+		i {
+			margin: 0;
+		}
+		.Button {
+			width: 31%;
+		}
 	}
 }
 
@@ -18,10 +32,16 @@
 		top: auto;
 		bottom: 10px;
 		max-width: 100%;
-		button, a {
-			font-size: 20px;
-			padding: 8px 16px;
+		.Button {
+			font-size: 18px;
+			padding: 14px 16px;
 			margin-right: 10px;
+			min-width: 150px;
+		}
+		.small {
+			.Button {
+				min-width: 50px;
+			}
 		}
 	}
 }

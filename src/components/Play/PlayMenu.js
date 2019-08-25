@@ -14,24 +14,27 @@ const PlayMenu = ({ size }) => {
 	};
 
 	const startLevelOver = () => {
-		if (!window.confirm("Are you sure you want to restart?")) return;
+		if (!window.confirm("Are you sure you want to start this level over?"))
+			return;
 		dispatch(level.startOver());
-	}
+	};
 
 	return (
 		<nav className="PlayMenu">
-			<Button onClick={startNewGame} tier="secondary">
-				Skip Level
-			</Button>
-			<Button onClick={startLevelOver} tier="secondary">
-				Start Over	
-			</Button>
-			<Button to="/" tier="secondary">
-				<i className="fas fa-home"></i>
-			</Button>
+			<div className="small">
+				<Button to="/" tier="secondary">
+					<i className="fas fa-bars"></i>
+				</Button>
+				<Button onClick={startNewGame} tier="secondary">
+					<i className="fas fa-ban"></i>
+				</Button>
+				<Button onClick={startLevelOver} tier="secondary">
+					<i className="fas fa-eraser"></i>
+				</Button>
+			</div>
 			{undoable && (
 				<Button onClick={() => dispatch(level.undo())} tier="secondary">
-					<i className="fas fa-undo-alt"></i>
+					<i className="fas fa-undo-alt"></i> Undo
 				</Button>
 			)}
 		</nav>
