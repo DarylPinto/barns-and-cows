@@ -12,7 +12,8 @@ const initialState = {
 	id: 1,
 	type: "standard",
 	board: [],
-	moveHistory: []
+	moveHistory: [],
+	completed: false
 };
 
 const levelSlice = createSlice({
@@ -23,6 +24,7 @@ const levelSlice = createSlice({
 			const board = generateBoard(action.payload.size);
 			state.board = board;
 			state.moveHistory = [];
+			state.completed = false;
 		},
 		cycleTile(state, action) {
 			// Select tile tile based on payload
@@ -35,19 +37,27 @@ const levelSlice = createSlice({
 				tile.choice = types[(types.indexOf(tile.choice) + 1) % types.length];
 				// Save move in moveHistory
 				state.moveHistory.push({ x, y });
+				// Check if board is complete (player has won)
+				if (flatBoard.every(t => t.choice === t.type)) {
+					state.completed = true;
+					 // This is a side effect and should be removed
+					window.setTimeout(() => {
+						window.alert("YOU WIN!");
+					}, 400);	
+				}
 			}
 		},
 		undo(state, action) {
 			// Get last history item
 			let historyItem = state.moveHistory.pop();
-			if(!historyItem) return state;
+			if (!historyItem) return state;
 			// Select tile based on historyItem
 			const { x, y } = historyItem;
 			const flatBoard = state.board.flat();
 			let tile = flatBoard.find(t => t.x === x && t.y === y);
 			// console.log(JSON.parse(JSON.stringify(tile)));
 			let prevTypeIndex = types.indexOf(tile.choice) - 1;
-			if(prevTypeIndex <= -1) prevTypeIndex = types.length - 1;	
+			if (prevTypeIndex <= -1) prevTypeIndex = types.length - 1;
 			// Cycle tile backwards
 			tile.choice = types[prevTypeIndex];
 		}

@@ -1,5 +1,5 @@
 import React from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import { actions as level } from "store/slices/level";
 import Button from "components/Button";
 import "./PlayMenu.scss";
