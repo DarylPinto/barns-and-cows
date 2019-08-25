@@ -1,22 +1,31 @@
 import React from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { actions as level } from "store/slices/level";
-import { Link } from "react-router-dom";
+import Button from "components/Button";
 import "./PlayMenu.scss";
 
 const PlayMenu = ({ size }) => {
 	const dispatch = useDispatch();
+	const undoable = useSelector(state => state.level.moveHistory.length > 0);
 
 	const startNewGame = () => {
-		if(!window.confirm("Are you sure you want to start a new game?")) return;
+		if (!window.confirm("Are you sure you want to start a new game?")) return;
 		dispatch(level.setNewBoard({ size }));
-	}
+	};
 
 	return (
 		<nav className="PlayMenu">
-			<Link to="/">← Back</Link>
-			<a onClick={() => dispatch(level.undo())}>Undo</a>
-			<a onClick={startNewGame}>New Game</a>
+			<Button onClick={startNewGame} tier="secondary">
+				New Game
+			</Button>
+			<Button to="/" tier="secondary">
+				<i class="fas fa-home"></i>
+			</Button>
+			{undoable && (
+				<Button onClick={() => dispatch(level.undo())} tier="secondary">
+					<i class="fas fa-undo-alt"></i>
+				</Button>
+			)}
 		</nav>
 	);
 };

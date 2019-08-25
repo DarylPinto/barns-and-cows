@@ -1,11 +1,27 @@
 .PlayMenu {
+	display: flex;
+	flex-direction: column;
 	position: fixed;
 	top: 10px;
-	left: 0;
-	a {
-		color: #de0e3c;
-		text-decoration: underline;
-		padding: 10px;	
-		cursor: pointer;
+	left: 10px;
+	max-width: 150px;
+	button, a {
+		font-size: 20px;
+		padding: 10px;
+		margin-bottom: 5px;
+	}
+}
+
+@media screen and (max-width: 750px) {
+	.PlayMenu {
+		flex-direction: row;
+		top: auto;
+		bottom: 10px;
+		max-width: 100%;
+		button, a {
+			font-size: 20px;
+			padding: 8px 16px;
+			margin-right: 10px;
+		}
 	}
 }

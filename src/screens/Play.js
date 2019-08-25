@@ -3,7 +3,7 @@ import Board from "components/Board";
 import PlayMenu from "components/PlayMenu";
 import "./Play.scss";
 
-const boardSize = 7;
+const boardSize = 8;
 
 const Play = () => {
 	return (

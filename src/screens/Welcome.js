@@ -1,5 +1,5 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import Button from "components/Button";
 import "./Welcome.scss";
 
 const Welcome = () => {
@@ -8,7 +8,7 @@ const Welcome = () => {
 			<h1>
 				Barns<span>and</span>Cows
 			</h1>
-			<Link to="/play">Play</Link>
+			<Button to="/play" tier="primary">Play</Button>
 		</div>
 	);
 };
