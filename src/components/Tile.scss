@@ -14,9 +14,9 @@ td.tile {
 	&::before {
 		content: "";
 		display: block;
-		width: 50%;
+		width: 75%;
 		margin: auto;
-		background-image: url("../assets/images/tent.svg");
+		background-image: url("../assets/images/cow.svg");
 		background-size: contain;
 		background-repeat: no-repeat;
 		background-position: center center;
@@ -35,9 +35,9 @@ td.tile {
 	&.barn,
 	&.grass,
 	&.cow {
-		background-color: #ccd67d;
+		background-color: #b38338;
 		position: relative;
-		border-color: #98bd8e;
+		border-color: #805717;
 	}
 }
 
