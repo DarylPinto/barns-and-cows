@@ -21,14 +21,14 @@
 	&.primary {
 		background-color: #de0e3c;
 		border-color: #981532;
-		&:hover, &:active {
+		&:active {
 			background-color: #b5173a;
 		}
 	}
 	&.secondary {
 		background-color: #20b0b9;
     border-color: #108890;
-		&:hover, &:active {
+		&:active {
 			background-color: #309ca2;
 		}
 	}

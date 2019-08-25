@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { actions as level } from "store/slices/level";
-import Tile from "components/Tile";
-import CowCount from "components/CowCount";
+import Tile from "components/Play/Tile";
+import CowCount from "components/Play/CowCount";
 import "./Board.scss";
 
 const debug = false;
@@ -25,7 +25,7 @@ const Board = ({ size }) => {
 
 	useEffect(() => {
 		// Initialize board if uninitialized
-		if (board.length === 0) {	
+		if (board.length === 0) {
 			dispatch(level.setNewBoard({ size }));
 		}
 
@@ -33,7 +33,7 @@ const Board = ({ size }) => {
 		resizeBoard();
 		window.addEventListener("resize", resizeBoard);
 		return () => window.removeEventListener("resize", resizeBoard);
-	}, []);
+	}, []); // eslint-disable-line react-hooks/exhaustive-deps
 
 	const style = {
 		marginLeft: (tileWidth / 2) * -1,
@@ -42,7 +42,6 @@ const Board = ({ size }) => {
 
 	return (
 		<main className="Board" style={style}>
-			{/* <button onClick={() => setDebug(!debug)}>Toggle Debug Mode</button> */}
 			<table>
 				<tbody>
 					<tr>
@@ -51,14 +50,20 @@ const Board = ({ size }) => {
 							<CowCount
 								tiles={flatBoard.filter(t => t.x === i)}
 								width={tileWidth}
+								key={i}
 							/>
 						))}
 					</tr>
-					{board.map(row => (
-						<tr>
+					{board.map((row, i) => (
+						<tr key={i}>
 							<CowCount tiles={row} width={tileWidth} />
 							{row.map(tile => (
-								<Tile tile={tile} debug={debug} width={tileWidth} />
+								<Tile
+									key={tile.x + "," + tile.y}
+									tile={tile}
+									debug={debug}
+									width={tileWidth}
+								/>
 							))}
 						</tr>
 					))}

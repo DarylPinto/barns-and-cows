@@ -16,17 +16,13 @@ const Tile = ({ tile, debug, width }) => {
 		borderRadius: Math.round(width / 10)
 	};
 
+	const handleClick = () => {
+		const { x, y } = tile;
+		dispatch(level.cycleTile({ x, y }));
+	};
+
 	return (
-		<td
-			className={tileClass}
-			style={style}
-			onClick={() => dispatch(
-				level.cycleTile({
-					x: tile.x,
-					y: tile.y
-				})
-			)}
-		>
+		<td className={tileClass} style={style} onClick={handleClick}>
 			{debug && (
 				<div>
 					<pre>x: {tile.x}</pre>

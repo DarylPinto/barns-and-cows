@@ -1,7 +1,7 @@
 import React from "react";
 import classNames from "classnames";
 import "./CowCount.scss";
-import { GRASS, COW, BARN } from "assets/constants";
+import { COW } from "assets/constants";
 
 const CowCount = ({ tiles, width }) => {
 	let count = tiles.filter(t => t.type === COW).length;

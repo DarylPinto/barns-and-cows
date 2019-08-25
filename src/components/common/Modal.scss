@@ -1,0 +1,47 @@
+.ModalShade {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	position: fixed;
+	top: 0;
+	left: 0;
+	height: 100%;
+	width: 100%;
+	background-color: rgba(0, 0, 0, 0.75);
+	transition: 0.4s;
+	opacity: 0;
+	pointer-events: none;
+	&.visible {
+		opacity: 1;
+		pointer-events: auto;
+		.Modal {
+			transform: scale(1);
+		}
+	}
+}
+
+.Modal {
+	text-align: center;
+	background-color: white;
+	padding: 40px 80px;
+	min-width: 30vw;
+	max-width: 90vw;
+	border-radius: 10px;
+	transition: .4s;
+	transform: scale(0.2);
+
+	h1 {
+		font-size: 3rem;
+		margin-bottom: 15px;
+	}
+
+	p {
+		font-size: 1.2rem;
+		font-family: sans-serif;
+		margin-bottom: 45px;
+	}
+
+	.Button {
+		font-size: 16px;
+	}
+}

@@ -38,13 +38,7 @@ const levelSlice = createSlice({
 				// Save move in moveHistory
 				state.moveHistory.push({ x, y });
 				// Check if board is complete (player has won)
-				if (flatBoard.every(t => t.choice === t.type)) {
-					state.completed = true;
-					 // This is a side effect and should be removed
-					window.setTimeout(() => {
-						window.alert("YOU WIN!");
-					}, 400);	
-				}
+				state.completed = flatBoard.every(t => t.choice === t.type);
 			}
 		},
 		undo(state, action) {
@@ -60,6 +54,15 @@ const levelSlice = createSlice({
 			if (prevTypeIndex <= -1) prevTypeIndex = types.length - 1;
 			// Cycle tile backwards
 			tile.choice = types[prevTypeIndex];
+		},
+		startOver(state, action) {
+			for(let i = 0;i < state.board.length;i++){
+				for(let j = 0;j < state.board.length;j++) {
+					let tile = state.board[i][j];
+					if(tile.type !== BARN) tile.choice = null;
+				}
+			}
+			state.moveHistory = [];
 		}
 	}
 });
