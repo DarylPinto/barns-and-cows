@@ -3,6 +3,7 @@
 	justify-content: center;
 	align-items: center;
 	position: fixed;
+	z-index: 1;
 	top: 0;
 	left: 0;
 	height: 100%;
@@ -26,6 +27,7 @@
 	padding: 40px 80px;
 	min-width: 30vw;
 	max-width: 90vw;
+	min-height: 275px;
 	border-radius: 10px;
 	transition: .4s;
 	transform: scale(0.2);

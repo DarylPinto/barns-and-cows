@@ -4,13 +4,13 @@
 	cursor: default;
 	transition: 0.2s;
 	transition-delay: 0.2s;
-	color: #7f4e40;
+	color: #af9e62;
 	&:hover {
 		z-index: 1;
 	}
 
 	&.complete {
-		opacity: 0.2;
+		opacity: 0.35;
 	}
 
 	&.invalid {

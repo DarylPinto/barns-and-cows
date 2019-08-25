@@ -7,7 +7,7 @@ import Button from "components/common/Button";
 import { actions as level } from "store/slices/level";
 import "./Play.scss";
 
-const boardSize = 8;
+const boardSize = 20;
 
 const Play = () => {
 	const dispatch = useDispatch();
