@@ -3,8 +3,14 @@ import { Link } from "react-router-dom";
 import classNames from "classnames";
 import "./Button.scss";
 
-const Button = ({ to = null, onClick = null, tier, children }) => {
-	const className = classNames("Button", tier);
+const Button = ({
+	to = null,
+	onClick = null,
+	disabled = false,
+	tier,
+	children
+}) => {
+	const className = classNames("Button", tier, { disabled });
 
 	// Disable context menu (right click/mobile long press)
 	// on buttons for a more app-like feel
@@ -29,6 +35,7 @@ const Button = ({ to = null, onClick = null, tier, children }) => {
 			onClick={onClick}
 			className={className}
 			onContextMenu={disableContextMenu}
+			disabled={disabled}
 		>
 			{children}
 		</button>

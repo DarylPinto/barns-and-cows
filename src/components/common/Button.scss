@@ -10,13 +10,15 @@
 	border: none;
 	border-bottom: 5px solid gray;
 	position: relative;
-	transition: .2s;
 	outline: 0;
 	cursor: pointer;	
-	&:active {	
+	&:active {
 		margin-top: 3px;
-		top: 3px;
 		border-width: 2px;
+	}
+	&.disabled, &[disabled] {
+		pointer-events: none;
+		opacity: 0.5;
 	}
 	&.primary {
 		background-color: #de0e3c;

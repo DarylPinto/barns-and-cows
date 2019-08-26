@@ -45,5 +45,9 @@
 
 	.Button {
 		font-size: 16px;
+		&:active {
+			margin-top: 0;
+			top: 3px;
+		}
 	}
 }
