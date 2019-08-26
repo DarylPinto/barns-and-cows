@@ -1,7 +1,5 @@
+import pseudorandom from "seed-random";
 import { GRASS, COW, BARN } from "assets/constants";
-
-// Helper functions
-const randItem = arr => arr[Math.floor(Math.random() * arr.length)];
 
 // Game logic
 const getTile = (flatGrid, x, y) => {
@@ -41,7 +39,11 @@ const getFreeAdjacentTiles = (flatGrid, tile) => {
 };
 
 const generate = size => {
+	let random = pseudorandom(Date.now());
 	let grid = [];
+
+	// Get random item from array
+	const randItem = arr => arr[Math.floor(random() * arr.length)];
 
 	// Generate initial grid
 	for (let i = 0; i < size; i++) {
@@ -60,7 +62,7 @@ const generate = size => {
 		for (let j = 0; j < size; j++) {
 			let tile = grid[i][j];
 			// Randomly place cows that are not touching each other
-			if (Math.random() > 0.55 && !tentIsBorderingTile(flatGrid, tile)) {
+			if (random() > 0.55 && !tentIsBorderingTile(flatGrid, tile)) {
 				tile.type = COW;
 			}
 		}

@@ -21,9 +21,7 @@ const PlayMenu = ({ size }) => {
 
 	useEffect(() => {
 		document.addEventListener("keydown", closeAllModals);
-		return () => {
-			document.removeEventListener("keydown", closeAllModals);	
-		}
+		return () => document.removeEventListener("keydown", closeAllModals);	
 	}, []);
 
 	return (
@@ -32,13 +30,13 @@ const PlayMenu = ({ size }) => {
 			<nav className="PlayMenu">
 				<div className="small">
 					<Button to="/" tier="secondary">
-						<i className="fas fa-bars"></i>
+						<i className="fas fa-bars" />
 					</Button>
 					<Button onClick={() => setRestartModalOpen(true)} tier="secondary">
-						<i className="fas fa-undo-alt"></i>
+						<i className="fas fa-undo-alt" />
 					</Button>
 					<Button onClick={() => setSkipModalOpen(true)} tier="secondary">
-						<i className="fas fa-fast-forward"></i>
+						<i className="fas fa-fast-forward" />
 					</Button>
 				</div>
 				<Button
@@ -46,7 +44,7 @@ const PlayMenu = ({ size }) => {
 					disabled={!undoable}
 					tier="secondary"
 				>
-					<i className="fas fa-level-up-alt"></i> Undo
+					<i className="fas fa-level-up-alt" /> Undo
 				</Button>
 			</nav>
 
