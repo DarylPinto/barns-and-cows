@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import useWindowSize from "hooks/useWindowSize";
 import { useSelector, useDispatch } from "react-redux";
 import { actions as level } from "store/slices/level";
 import Tile from "components/Play/Tile";
@@ -8,6 +9,7 @@ import "./Board.scss";
 const debug = false;
 
 const Board = ({ size }) => {
+	const windowSize = useWindowSize();
 	const dispatch = useDispatch();
 
 	const board = useSelector(state => state.level.board);
@@ -18,22 +20,20 @@ const Board = ({ size }) => {
 	// Resize board width/height to fit screen
 	const resizeBoard = () => {
 		let boardWidth = Math.round(
-			Math.min(document.body.offsetHeight, document.body.offsetWidth) * 0.75
+			Math.min(document.body.offsetHeight, document.body.offsetWidth) * 0.85
 		);
-		setTileWidth(boardWidth / size);
+		setTileWidth(boardWidth / board.length);
 	};
 
+	// On mount
 	useEffect(() => {
 		// Initialize board if uninitialized
-		if (board.length === 0) {
-			dispatch(level.setNewBoard({ size }));
-		}
-
-		// Resize board when window size changes
+		if (board.length === 0) dispatch(level.setNewBoard({ size }));
 		resizeBoard();
-		window.addEventListener("resize", resizeBoard);
-		return () => window.removeEventListener("resize", resizeBoard);
 	}, []); // eslint-disable-line react-hooks/exhaustive-deps
+
+	// Resize board when board size or window size changes
+	useEffect(resizeBoard, [windowSize, board.length]);
 
 	const style = {
 		marginLeft: (tileWidth / 2) * -1,
