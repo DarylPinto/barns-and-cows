@@ -5,9 +5,10 @@ import Button from "components/common/Button";
 import Modal from "components/common/Modal";
 import "./PlayMenu.scss";
 
-const PlayMenu = ({ size }) => {
+const PlayMenu = () => {
 	const dispatch = useDispatch();
 	const undoable = useSelector(state => state.level.moveHistory.length > 0);
+	const levelId = useSelector(state => state.level.id);
 
 	const [restartModalOpen, setRestartModalOpen] = useState(false);
 	const [skipModalOpen, setSkipModalOpen] = useState(false);
@@ -21,7 +22,7 @@ const PlayMenu = ({ size }) => {
 
 	useEffect(() => {
 		document.addEventListener("keydown", closeAllModals);
-		return () => document.removeEventListener("keydown", closeAllModals);	
+		return () => document.removeEventListener("keydown", closeAllModals);
 	}, []);
 
 	return (
@@ -77,7 +78,7 @@ const PlayMenu = ({ size }) => {
 					tier="secondary"
 					onClick={() => {
 						setSkipModalOpen(false);
-						dispatch(level.setNewBoard({ size }));
+						dispatch(level.loadLevel({ id: levelId + 1 }));
 					}}
 				>
 					Yes

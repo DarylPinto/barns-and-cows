@@ -1,8 +1,4 @@
 .PlayMenuWrapper {
-	position: fixed;
-	top: 10px;
-	left: 10px;
-	z-index: 2;
 	.Modal {
 		.Button {
 			margin-left: 10px;
@@ -15,6 +11,10 @@
 
 .PlayMenu {
 	display: flex;
+	position: fixed;
+	top: 10px;
+	left: 10px;
+	z-index: 2;
 	flex-direction: column;
 	min-width: 200px;
 	button,
@@ -42,10 +42,13 @@
 }
 
 @media screen and (max-width: 750px) {
-	.PlayMenu {
-		flex-direction: row;
+	.PlayMenuWrapper {
 		top: auto;
 		bottom: 10px;
+	}
+
+	.PlayMenu {
+		flex-direction: row;	
 		max-width: 100%;
 		.Button {
 			font-size: 18px;

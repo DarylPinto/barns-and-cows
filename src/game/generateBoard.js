@@ -38,8 +38,8 @@ const getFreeAdjacentTiles = (flatGrid, tile) => {
 	].filter(tile => tile.x > -500 && tile.type === GRASS);
 };
 
-const generate = size => {
-	let random = pseudorandom(Date.now());
+const generate = (size, seed) => {
+	let random = pseudorandom(seed);
 	let grid = [];
 
 	// Get random item from array

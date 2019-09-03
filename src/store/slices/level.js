@@ -1,5 +1,6 @@
 import { createSlice } from "redux-starter-kit";
 import generateBoard from "game/generateBoard";
+import levelData from "game/levelData";
 import { GRASS, COW, BARN } from "assets/constants";
 
 // Types of tiles
@@ -20,8 +21,10 @@ const levelSlice = createSlice({
 	slice: "level",
 	initialState: savedState ? savedState.level : initialState,
 	reducers: {
-		setNewBoard(state, action) {
-			const board = generateBoard(action.payload.size);
+		loadLevel(state, action) {
+			const level = levelData.find(l => l.id === action.payload.id);
+			const board = generateBoard(level.size, level.seed);
+			state.id = level.id;
 			state.board = board;
 			state.moveHistory = [];
 			state.completed = false;
@@ -41,6 +44,7 @@ const levelSlice = createSlice({
 				state.completed = flatBoard.every(t => t.choice === t.type);
 			}
 		},
+		// eslint-disable-next-line no-unused-vars
 		undo(state, action) {
 			// Get last history item
 			let historyItem = state.moveHistory.pop();
@@ -55,11 +59,12 @@ const levelSlice = createSlice({
 			// Cycle tile backwards
 			tile.choice = types[prevTypeIndex];
 		},
+		// eslint-disable-next-line no-unused-vars
 		startOver(state, action) {
-			for(let i = 0;i < state.board.length;i++){
-				for(let j = 0;j < state.board.length;j++) {
+			for (let i = 0; i < state.board.length; i++) {
+				for (let j = 0; j < state.board.length; j++) {
 					let tile = state.board[i][j];
-					if(tile.type !== BARN) tile.choice = null;
+					if (tile.type !== BARN) tile.choice = null;
 				}
 			}
 			state.moveHistory = [];

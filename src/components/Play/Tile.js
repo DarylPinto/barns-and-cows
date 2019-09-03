@@ -12,7 +12,6 @@ const Tile = ({ tile, debug, width }) => {
 
 	const style = {
 		width: Math.round(width),
-
 		height: Math.round(width),
 		borderRadius: Math.round(width / 10)
 	};

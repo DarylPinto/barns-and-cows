@@ -8,10 +8,11 @@ import "./Board.scss";
 
 const debug = false;
 
-const Board = ({ size }) => {
+const Board = () => {
 	const windowSize = useWindowSize();
 	const dispatch = useDispatch();
 
+	const levelId = useSelector(state => state.level.id);
 	const board = useSelector(state => state.level.board);
 	const flatBoard = board.flat();
 
@@ -29,7 +30,7 @@ const Board = ({ size }) => {
 	// On mount
 	useEffect(() => {
 		// Initialize board if uninitialized
-		if (board.length === 0) dispatch(level.setNewBoard({ size }));
+		if (board.length === 0) dispatch(level.loadLevel({ id: levelId + 1 }));
 		resizeBoard();
 		setVisible(true);
 	}, []); // eslint-disable-line react-hooks/exhaustive-deps
