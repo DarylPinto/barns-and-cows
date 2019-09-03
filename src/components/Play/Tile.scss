@@ -4,7 +4,8 @@ td.tile {
 	border-color: transparent;
 	border-style: solid;
 	cursor: pointer;
-	transition: 0.2s;
+	transition-property: background-color;
+	transition-duration: 0.2s;
 	color: white;
 	font-size: 10px;
 	position: relative;

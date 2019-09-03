@@ -1,0 +1,16 @@
+TODO:
+- Improve scaling performance
+- Replace Tree asset with Barn
+- Update color palette
+- Improve level generation algorithm
+- Add levels using seeded PRNG
+- Add swipe support for grass tiles
+- Create new game rule (maybe?)
+- hijack back buttons for more app-like feel (maybe with a hook)
+- Add accessibility zoom
+- Ensure menu controls are over top of the game board
+- Fix modal sizing on mobile
+- Add how-to-play tutorial
+
+Done:
+- Add linting files
