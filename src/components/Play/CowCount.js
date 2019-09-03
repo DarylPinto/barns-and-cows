@@ -1,4 +1,4 @@
-import React from "react";
+import React, { memo } from "react";
 import classNames from "classnames";
 import "./CowCount.scss";
 import { COW } from "assets/constants";
@@ -26,4 +26,4 @@ const CowCount = ({ tiles, width }) => {
 	);
 };
 
-export default CowCount;
+export default memo(CowCount);

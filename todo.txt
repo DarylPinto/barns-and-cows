@@ -1,5 +1,4 @@
 TODO:
-- Improve scaling performance
 - Replace Tree asset with Barn
 - Update color palette
 - Improve level generation algorithm
@@ -14,3 +13,4 @@ TODO:
 
 Done:
 - Add linting files
+- Improve scaling performance

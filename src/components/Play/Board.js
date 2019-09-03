@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { memo, useState, useEffect } from "react";
 import useWindowSize from "hooks/useWindowSize";
 import { useSelector, useDispatch } from "react-redux";
 import { actions as level } from "store/slices/level";
@@ -15,7 +15,8 @@ const Board = ({ size }) => {
 	const board = useSelector(state => state.level.board);
 	const flatBoard = board.flat();
 
-	const [tileWidth, setTileWidth] = useState(0);
+	const [tileWidth, setTileWidth] = useState(20);
+	const [visible, setVisible] = useState(false);
 
 	// Resize board width/height to fit screen
 	const resizeBoard = () => {
@@ -30,6 +31,7 @@ const Board = ({ size }) => {
 		// Initialize board if uninitialized
 		if (board.length === 0) dispatch(level.setNewBoard({ size }));
 		resizeBoard();
+		setVisible(true);
 	}, []); // eslint-disable-line react-hooks/exhaustive-deps
 
 	// Resize board when board size or window size changes
@@ -37,7 +39,8 @@ const Board = ({ size }) => {
 
 	const style = {
 		marginLeft: (tileWidth / 2) * -1,
-		marginTop: (tileWidth / 2) * -1
+		marginTop: (tileWidth / 2) * -1,
+		opacity: visible ? "visible" : "hidden"
 	};
 
 	return (
@@ -73,4 +76,4 @@ const Board = ({ size }) => {
 	);
 };
 
-export default Board;
+export default memo(Board);
