@@ -28,7 +28,7 @@ const Board = () => {
 	// On mount
 	useEffect(() => {
 		// Initialize board if uninitialized
-		if (board.length === 0) dispatch(level.loadLevel({ id: levelId + 1 }));
+		if (board.length === 0) dispatch(level.loadLevel({ id: levelId }));
 		resizeBoard();
 		setVisible(true);
 	}, []); // eslint-disable-line react-hooks/exhaustive-deps

@@ -1,7 +1,7 @@
 export default [
-	{ id: 1, seed: "XMYJISU7V", size: 5 },
-	{ id: 2, seed: "ZVAQWGJQ1", size: 5 },
-	{ id: 3, seed: "KMQWLYMQA", size: 5 },
+	{ id: 1, seed: "XMYJISU7V", size: 4 },
+	{ id: 2, seed: "ZVAQWGJQ1", size: 4 },
+	{ id: 3, seed: "KMQWLYMQA", size: 4 },
 	{ id: 4, seed: "408YV1E6R", size: 5 },
 	{ id: 5, seed: "MXTJMTM66", size: 5 },
 	{ id: 6, seed: "OPJZ1D0YR", size: 5 },
