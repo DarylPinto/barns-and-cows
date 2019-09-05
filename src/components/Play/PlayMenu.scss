@@ -1,14 +1,3 @@
-.PlayMenuWrapper {
-	.Modal {
-		.Button {
-			margin-left: 10px;
-			&:first-of-type {
-				margin-left: 0;
-			}
-		}	
-	}
-}
-
 .PlayMenu {
 	display: flex;
 	position: fixed;

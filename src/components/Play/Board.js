@@ -22,7 +22,7 @@ const Board = () => {
 	// Resize board width/height to fit screen
 	const resizeBoard = () => {
 		let boardWidth = Math.round(
-			Math.min(document.body.offsetHeight, document.body.offsetWidth) * 0.85
+			Math.min(document.body.offsetHeight, document.body.offsetWidth) * 0.8
 		);
 		setTileWidth(boardWidth / board.length);
 	};

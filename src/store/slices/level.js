@@ -60,7 +60,7 @@ const levelSlice = createSlice({
 			tile.choice = types[prevTypeIndex];
 		},
 		// eslint-disable-next-line no-unused-vars
-		startOver(state, action) {
+		restart(state, action) {
 			for (let i = 0; i < state.board.length; i++) {
 				for (let j = 0; j < state.board.length; j++) {
 					let tile = state.board[i][j];
