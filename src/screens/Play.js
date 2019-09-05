@@ -16,7 +16,7 @@ const Play = () => {
 
 	return (
 		<div className="Play">
-			<h1 style={{ position: "absolute", bottom: 0, left: 0 }}>
+			<h1 style={{ position: "absolute", bottom: 100, left: 10 }}>
 				Level {levelId}
 			</h1>
 			<PlayMenu />

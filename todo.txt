@@ -7,10 +7,10 @@ TODO:
 - Create new game rule (maybe?)
 - hijack back buttons for more app-like feel (maybe with a hook)
 - Add accessibility zoom
-- Ensure menu controls are over top of the game board
-- Fix modal sizing on mobile
 - Add how-to-play tutorial
 
 Done:
 - Add linting files
 - Improve scaling performance
+- Ensure menu controls are over top of the game board
+- Fix modal sizing on mobile
