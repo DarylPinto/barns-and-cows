@@ -1,11 +1,13 @@
 import { combineReducers } from "redux";
 import { configureStore } from "redux-starter-kit";
-import levelReducer from "store/slices/level";
 import playerReducer from "store/slices/player";
+import gameReducer from "store/slices/game";
+import levelReducer from "store/slices/level";
 
 const reducer = combineReducers({
-	level: levelReducer,
 	player: playerReducer,
+	game: gameReducer,
+	level: levelReducer,
 	debug: () => false
 });
 

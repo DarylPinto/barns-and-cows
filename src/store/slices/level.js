@@ -7,11 +7,10 @@ import { GRASS, COW, BARN } from "assets/constants";
 const types = [GRASS, COW, null];
 
 // Initial state (Either from localStorage or from object below)
-const savedState = JSON.parse(window.localStorage.getItem("state"));
+const saveData = JSON.parse(window.localStorage.getItem("state"));
 
 const initialState = {
 	id: 1,
-	type: "standard",
 	board: [],
 	moveHistory: [],
 	completed: false
@@ -19,7 +18,7 @@ const initialState = {
 
 const levelSlice = createSlice({
 	slice: "level",
-	initialState: savedState ? savedState.level : initialState,
+	initialState: saveData && saveData.level ? saveData.level : initialState,
 	reducers: {
 		loadLevel(state, action) {
 			const level = levelData.find(l => l.id === action.payload.id);
@@ -44,8 +43,7 @@ const levelSlice = createSlice({
 				state.completed = flatBoard.every(t => t.choice === t.type);
 			}
 		},
-		// eslint-disable-next-line no-unused-vars
-		undo(state, action) {
+		undo(state) {
 			// Get last history item
 			let historyItem = state.moveHistory.pop();
 			if (!historyItem) return state;
@@ -59,8 +57,7 @@ const levelSlice = createSlice({
 			// Cycle tile backwards
 			tile.choice = types[prevTypeIndex];
 		},
-		// eslint-disable-next-line no-unused-vars
-		restart(state, action) {
+		restart(state) {
 			for (let i = 0; i < state.board.length; i++) {
 				for (let j = 0; j < state.board.length; j++) {
 					let tile = state.board[i][j];

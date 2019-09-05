@@ -1,9 +1,16 @@
 {
-	"completedLevels": [1, 2, 3, 4, 5, 6, 7, 8],
-	"currentGame": {
-		"levelType": "standard",
-		"levelCode": 1,
+	"player": {
+		"completedLevels": [1, 2, 3],
+		"hasCompletedTutorial": false
+	},
+	"game": {
+		"mode": "STANDARD"
+	},
+	"level": {
+		"id": 1,
 		"board": [[], [], [], []],
-		"moveHistory": []
-	}
+		"moveHistory": [],
+		"completed": false
+	},
+	"debug": false
 }
