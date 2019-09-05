@@ -1,10 +1,11 @@
 import React, { memo } from "react";
-import { useDispatch } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import { actions as level } from "store/slices/level";
 import "./Tile.scss";
 
-const Tile = ({ tile, debug, width }) => {
+const Tile = ({ tile, width }) => {
 	const dispatch = useDispatch();
+	const debug = useSelector(state => state.debug);
 
 	const tileClass = tile.choice
 		? `tile ${tile.choice.toLowerCase()}`.trim()

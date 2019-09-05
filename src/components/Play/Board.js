@@ -6,8 +6,6 @@ import Tile from "components/Play/Tile";
 import CowCount from "components/Play/CowCount";
 import "./Board.scss";
 
-const debug = false;
-
 const Board = () => {
 	const windowSize = useWindowSize();
 	const dispatch = useDispatch();
@@ -50,7 +48,7 @@ const Board = () => {
 				<tbody>
 					<tr>
 						<td />
-						{board.map((row, i) => (
+						{board.map((_, i) => (
 							<CowCount
 								tiles={flatBoard.filter(t => t.x === i)}
 								width={tileWidth}
@@ -65,7 +63,6 @@ const Board = () => {
 								<Tile
 									key={tile.x + "," + tile.y}
 									tile={tile}
-									debug={debug}
 									width={tileWidth}
 								/>
 							))}

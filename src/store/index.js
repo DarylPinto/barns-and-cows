@@ -5,7 +5,8 @@ import playerReducer from "store/slices/player";
 
 const reducer = combineReducers({
 	level: levelReducer,
-	player: playerReducer
+	player: playerReducer,
+	debug: () => false
 });
 
 const store = configureStore({ reducer });
