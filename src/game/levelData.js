@@ -1,4 +1,5 @@
 export default [
+	{ id: 0, seed: new Date(), size: 8 },
 	{ id: 1, seed: "XMYJISU7V", size: 4 },
 	{ id: 2, seed: "ZVAQWGJQ1", size: 4 },
 	{ id: 3, seed: "KMQWLYMQA", size: 4 },

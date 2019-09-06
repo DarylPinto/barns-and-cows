@@ -5,11 +5,17 @@ import { GRASS, COW, BARN } from "assets/constants";
 const getTile = (flatGrid, x, y) => {
 	let found = flatGrid.find(t => t.x === x && t.y === y);
 	// Dummy tile if no tile is found
-	if (!found) found = { x: -500, y: -500, type: GRASS, choice: null };
+	if (!found) found = { x: -2000, y: -2000, type: GRASS, choice: null };
 	return found;
 };
 
-const tentIsBorderingTile = (flatGrid, tile) => {
+const tileIsInEmptyAxis = (flatGrid, tile) => {
+	let cowCountX = flatGrid.filter(t => t.x === tile.x && t.type === COW);
+	let cowCountY = flatGrid.filter(t => t.y === tile.y && t.type === COW);
+	return cowCountX || cowCountY;
+};
+
+const cowIsBorderingTile = (flatGrid, tile) => {
 	let borderingTiles = [
 		// North bordering tiles
 		getTile(flatGrid, tile.x - 1, tile.y - 1),
@@ -35,7 +41,7 @@ const getFreeAdjacentTiles = (flatGrid, tile) => {
 		getTile(flatGrid, tile.x + 1, tile.y),
 		getTile(flatGrid, tile.x, tile.y - 1),
 		getTile(flatGrid, tile.x - 1, tile.y)
-	].filter(tile => tile.x > -500 && tile.type === GRASS);
+	].filter(tile => tile.x > -2000 && tile.type === GRASS);
 };
 
 const generate = (size, seed) => {
@@ -56,20 +62,25 @@ const generate = (size, seed) => {
 	}
 
 	// Populate grid with cows
-	let flatGrid = grid.flat();
 
 	for (let i = 0; i < size; i++) {
 		for (let j = 0; j < size; j++) {
+			let flatGrid = grid.flat();
 			let tile = grid[i][j];
 			// Randomly place cows that are not touching each other
-			if (random() > 0.55 && !tentIsBorderingTile(flatGrid, tile)) {
-				tile.type = COW;
+			if (!cowIsBorderingTile(flatGrid, tile)) {
+				if (random() > 0.2 && tileIsInEmptyAxis(flatGrid, tile)) {
+					tile.type = COW;
+				}
+				// 	tile.type = COW;
+				// } else if (random() > 0.55 && !cowIsBorderingTile(flatGrid, tile)) {
+				// 	tile.type = COW;
 			}
 		}
 	}
 
 	// Populate grid with barns
-	flatGrid = grid.flat();
+	let flatGrid = grid.flat();
 
 	for (let i = 0; i < size; i++) {
 		for (let j = 0; j < size; j++) {

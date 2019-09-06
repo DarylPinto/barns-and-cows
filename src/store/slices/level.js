@@ -10,7 +10,7 @@ const types = [GRASS, COW, null];
 const saveData = JSON.parse(window.localStorage.getItem("state"));
 
 const initialState = {
-	id: 1,
+	id: 0,
 	board: [],
 	moveHistory: [],
 	completed: false
