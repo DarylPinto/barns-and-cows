@@ -17,7 +17,7 @@ const Settings = withRouter(({ history }) => {
 	};
 
 	return (
-		<div className="Settings">
+		<div className="Settings screen">
 			<h1>Settings</h1>
 			<Button onClick={deleteSaveData} tier="secondary">
 				Delete all save data

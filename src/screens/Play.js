@@ -24,7 +24,7 @@ const Play = () => {
 	useEventListener(document, "keydown", handleEscKey);
 
 	return (
-		<div className="Play">
+		<div className="Play screen">
 			<h1 style={{ position: "absolute", bottom: 100, left: 10 }}>
 				Level {levelId}
 			</h1>

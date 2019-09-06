@@ -4,7 +4,7 @@ import "./Welcome.scss";
 
 const Welcome = () => {
 	return (
-		<div className="Welcome">
+		<div className="Welcome screen">
 			<h1>
 				Barns<span>and</span>Cows
 			</h1>
