@@ -1,4 +1,4 @@
-import React from "react";
+import React, { memo } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { actions as level } from "store/slices/level";
 import Button from "components/common/Button";
@@ -34,4 +34,4 @@ const PlayMenu = ({ openRestartModal, openSkipModal }) => {
 	);
 };
 
-export default PlayMenu;
+export default memo(PlayMenu);

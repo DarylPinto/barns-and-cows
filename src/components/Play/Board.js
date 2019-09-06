@@ -1,4 +1,4 @@
-import React, { memo, useState, useEffect } from "react";
+import React, { useState, useEffect, useMemo } from "react";
 import useWindowSize from "hooks/useWindowSize";
 import { useSelector, useDispatch } from "react-redux";
 import { actions as level } from "store/slices/level";
@@ -12,9 +12,9 @@ const Board = () => {
 
 	const levelId = useSelector(state => state.level.id);
 	const board = useSelector(state => state.level.board);
-	const flatBoard = board.flat();
+	const flatBoard = useMemo(() => board.flat(), [board]);
 
-	const [tileWidth, setTileWidth] = useState(20);
+	const [tileWidth, setTileWidth] = useState(0);
 	const [visible, setVisible] = useState(false);
 
 	// Resize board width/height to fit screen
@@ -39,7 +39,7 @@ const Board = () => {
 	const style = {
 		marginLeft: (tileWidth / 2) * -1,
 		marginTop: (tileWidth / 2) * -1,
-		opacity: visible ? "visible" : "hidden"
+		visibility: visible ? "visible" : "hidden"
 	};
 
 	return (
@@ -74,4 +74,4 @@ const Board = () => {
 	);
 };
 
-export default memo(Board);
+export default Board;

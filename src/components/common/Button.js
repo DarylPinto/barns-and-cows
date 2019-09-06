@@ -1,4 +1,4 @@
-import React from "react";
+import React, { memo } from "react";
 import { Link } from "react-router-dom";
 import classNames from "classnames";
 import "./Button.scss";
@@ -44,4 +44,4 @@ const Button = ({
 	return to ? linkButton : actionButton;
 };
 
-export default Button;
+export default memo(Button);

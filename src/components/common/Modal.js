@@ -1,4 +1,4 @@
-import React from "react";
+import React, { memo } from "react";
 import classNames from "classnames";
 import "./Modal.scss";
 
@@ -12,4 +12,4 @@ const Modal = ({ visible, children }) => {
 	);
 };
 
-export default Modal;
+export default memo(Modal);

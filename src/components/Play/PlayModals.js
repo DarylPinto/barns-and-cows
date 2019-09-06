@@ -1,4 +1,4 @@
-import React from "react";
+import React, { memo } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import Modal from "components/common/Modal";
 import Button from "components/common/Button";
@@ -67,4 +67,4 @@ const PlayModals = ({
 	);
 };
 
-export default PlayModals;
+export default memo(PlayModals);
