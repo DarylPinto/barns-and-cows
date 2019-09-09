@@ -5,11 +5,12 @@ import "./Tile.scss";
 
 const Tile = ({ tile, width }) => {
 	const dispatch = useDispatch();
-	const debug = useSelector(state => state.debug);
+	const debug = useSelector(state => state.debug.val);
 
-	const tileClass = tile.choice
+	let tileClass = tile.choice
 		? `tile ${tile.choice.toLowerCase()}`.trim()
 		: "tile";
+	if (debug) tileClass = `tile ${tile.type.toLowerCase()}`.trim();
 
 	const style = {
 		width: Math.round(width),
@@ -24,14 +25,14 @@ const Tile = ({ tile, width }) => {
 
 	return (
 		<td className={tileClass} style={style} onClick={handleClick}>
-			{debug && (
+			{/* {debug && (
 				<div>
 					<pre>x: {tile.x}</pre>
 					<pre>y: {tile.y}</pre>
 					<pre>type: {tile.type}</pre>
 					<pre>choice: {tile.choice || "NONE"}</pre>
 				</div>
-			)}
+			)} */}
 		</td>
 	);
 };

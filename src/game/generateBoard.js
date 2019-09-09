@@ -69,7 +69,7 @@ const generate = (size, seed) => {
 			let tile = grid[i][j];
 			// Randomly place cows that are not touching each other
 			if (!cowIsBorderingTile(flatGrid, tile)) {
-				if (random() > 0.2 && tileIsInEmptyAxis(flatGrid, tile)) {
+				if (random() > 0.8 && tileIsInEmptyAxis(flatGrid, tile)) {
 					tile.type = COW;
 				}
 				// 	tile.type = COW;

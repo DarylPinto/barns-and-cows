@@ -3,6 +3,8 @@ import { HashRouter, Switch, Route } from "react-router-dom";
 import { TransitionGroup, CSSTransition } from "react-transition-group";
 import "./TransitionRouter.scss";
 
+const screenTransitionTime = 150;
+
 // Animated router using TransitionGroup + CSSTransition
 // from react-transition-group
 const TransitionRouter = ({ children }) => {
@@ -14,7 +16,7 @@ const TransitionRouter = ({ children }) => {
 						<CSSTransition
 							key={location.pathname}
 							classNames="fade"
-							timeout={150}
+							timeout={screenTransitionTime}
 						>
 							<Switch location={location}>{children}</Switch>
 						</CSSTransition>

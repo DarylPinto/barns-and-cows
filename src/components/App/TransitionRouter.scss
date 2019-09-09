@@ -1,3 +1,6 @@
+$screen-transition-time: 150ms;
+
+// 'screen' class exists on all 'components' in the screens directory
 .screen {
 	position: absolute;
 	top: 0;
@@ -5,13 +8,14 @@
 	right: 0;
 }
 
+// Fade transition
 .fade-enter {
 	opacity: 0;
 }
 
 .fade-enter.fade-enter-active {
 	opacity: 1;
-	transition: opacity 150ms ease-in;
+	transition: opacity $screen-transition-time ease-in;
 }
 
 .fade-exit {
@@ -20,5 +24,25 @@
 
 .fade-exit.fade-exit-active {
 	opacity: 0;
-	transition: opacity 150ms ease-in;
+	transition: opacity $screen-transition-time ease-in;
 }
+
+// Slide left transition
+.slide-enter {
+	transform: translateX(100vw);
+}
+
+.slide-enter.slide-enter-active {
+	transform: translateX(0vw);
+	transition: transform $screen-transition-time ease-in;
+}
+
+.slide-exit {
+	transform: translateX(0vw);	
+}
+
+.slide-exit.slide-exit-active {
+	transform: translateX(-100vw);	
+	transition: transform $screen-transition-time ease-in;
+}
+

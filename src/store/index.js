@@ -3,12 +3,13 @@ import { configureStore } from "redux-starter-kit";
 import playerReducer from "store/slices/player";
 import gameReducer from "store/slices/game";
 import levelReducer from "store/slices/level";
+import debugReducer from "store/slices/debug";
 
 const reducer = combineReducers({
 	player: playerReducer,
 	game: gameReducer,
 	level: levelReducer,
-	debug: () => false
+	debug: debugReducer
 });
 
 const store = configureStore({ reducer });
